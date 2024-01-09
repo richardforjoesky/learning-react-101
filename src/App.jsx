@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import reactImg from './assets/react-core-concepts.png';
+import { CORE_CONCEPTS } from './data';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const reactDescriptions = ['Declarative', 'Component-Based', 'Learn Once, Write Anywhere'];
+
+function genRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
-export default App
+function Header() {
+  const description = reactDescriptions[genRandomInt(reactDescriptions.length)];
+  return (<header>
+    <img src={reactImg} alt="Stylized atom" />
+    <h1>React Essentials</h1>
+    <p>
+      {description} React concepts you will need for almost any app you are
+      going to build! Component
+    </p>
+  </header>)
+}
+
+function CoreConcept(props) {
+
+  return <li>
+    <img src={props.image} alt={props.title} />
+    <h2>{props.title}</h2>
+    <p>{props.description}</p>
+  </li>
+}
+function App() {
+  return (
+    <div>
+      <Header />
+      <main>
+      <section id="core-concepts">
+      <h2>Core Concepts</h2>
+      <h2>Time to get started!</h2>
+      <ul>
+        <CoreConcept {...CORE_CONCEPTS[0]}/>
+        <CoreConcept title={CORE_CONCEPTS[1].title} description={CORE_CONCEPTS[1].description} image={CORE_CONCEPTS[1].image}/>
+        <CoreConcept title={CORE_CONCEPTS[2].title} description={CORE_CONCEPTS[2].description} image={CORE_CONCEPTS[2].image}/>
+        <CoreConcept title={CORE_CONCEPTS[3].title} description={CORE_CONCEPTS[3].description} image={CORE_CONCEPTS[3].image}/>
+      </ul>
+        
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default App;

@@ -1,33 +1,7 @@
-import reactImg from './assets/react-core-concepts.png';
+/* eslint-disable react/prop-types */
 import { CORE_CONCEPTS } from './data';
-
-
-const reactDescriptions = ['Declarative', 'Component-Based', 'Learn Once, Write Anywhere'];
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
-function Header() {
-  const description = reactDescriptions[genRandomInt(reactDescriptions.length)];
-  return (<header>
-    <img src={reactImg} alt="Stylized atom" />
-    <h1>React Essentials</h1>
-    <p>
-      {description} React concepts you will need for almost any app you are
-      going to build! Component
-    </p>
-  </header>)
-}
-
-function CoreConcept(props) {
-
-  return <li>
-    <img src={props.image} alt={props.title} />
-    <h2>{props.title}</h2>
-    <p>{props.description}</p>
-  </li>
-}
+import Header from './Components/Header';
+import CoreConcept from './Components/CoreConcepts';
 function App() {
   return (
     <div>
